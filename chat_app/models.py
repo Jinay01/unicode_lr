@@ -87,10 +87,14 @@ class Institute(Account):
         return self.name
 
 
-class Unreg_students():
-    institute = models.ForeignKey(Institute, on_delete=models.CASCADE)
+class Unreg_students(models.Model):
     name = models.CharField(max_length=100)
     email = models.CharField(max_length=100)
+    password = models.CharField(max_length=100, null=True)
+    institute = models.ForeignKey(Institute, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
 
 
 # class Students(Account):
